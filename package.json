@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Jasmin2895/web-monetization#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "jquery": "^3.5.1",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
