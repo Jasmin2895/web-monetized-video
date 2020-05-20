@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="monetization" content="$ilp.gatehub.net/532270252">
+  <title>Web Monetization Ad Hider Component</title>
+
+  <style>
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      color: #121212;
+      line-height: 1.4;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    pre {
+      width: 100%;
+      overflow-x: scroll;
+    }
+
+    footer {
+      padding-top: 2em;
+      padding-bottom: 1em;
+      text-align: center;
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    web-monetized-video {
+      display:block;
+      height: 22.4px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>The <code>&lt;wm-ad-hider&gt;</code> component</h1>
+
+    <p>The
+      <code>&lt;wm-ad-hider&gt;</code> is a web component that you can use to hides ads if it determines the user is sending payments via web monetization.</p>
+
+    <p>The component only activates if the Web Monetization API is available, otherwise it will just show it's contents.</p>
+
+    <p>The component has 2 potential attributes you can use:</p>
+
+    <dl>
+      <dt>
+        <code>timeout</code>
+      </dt>
+      <dd>Sets the amount of time, in milliseconds, that the component will wait for web monetization to start sending payments. Default is 3000 (3 seconds).</dd>
+      <dt>
+        <code>ad-template</code>
+      </dt>
+      <dd>A CSS selector for a
+        <code>&lt;template&gt;</code> element. The component will find the template, hydrate it and use it as the ad contents. This overrides nesting a template element within the custom element.</dd>
+    </dl>
+
+    <h2>Examples</h2>
+
+    <p>If you are using a browser that doesn't support the Web Monetization API then you will immediately see the text "Adverts" below. If your browser supports Web Monetization and you send a payment to the page then the text "Adverts" will either not appear or disappear once you start sending payments.</p>
+
+    <wm-ad-hider>
+      <template>
+        <p><strong>Adverts</strong></p>
+      </template>
+    </wm-ad-hider>
+
+    <pre disabled><code>&lt;wm-ad-hider&gt;
+  &lt;template&gt;
+    &lt;p&gt;&lt;strong&gt;Adverts&lt;/strong&gt;&lt;/p&gt;
+  &lt;/template&gt;
+&lt;/wm-ad-hider&gt;</code></pre>
+
+
+  </main>
+
+  <footer>
+    <p>Made by
+      <a href="https://philna.sh">Phil Nash</a>
+    </p>
+  </footer>
+
+  <script src="../dist/wm-ad-hider.umd.js"></script>
+</body>
+
+</html>
