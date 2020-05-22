@@ -13,7 +13,6 @@ class WebMonetizedVideo extends HTMLElement {
         // runs whenever an element is created, but before the element is attached to the document.
         // it will be used to create the initial state, event listeners and creating shaow DOM.
         this.hasWebMonetizationEnabled= false;
-        this.isWebMonetized();
         // let template = document.getElementById("web-monetized-video"); // confirm template required or not.
     }
 
@@ -48,6 +47,7 @@ class WebMonetizedVideo extends HTMLElement {
         this.width = this.getAttribute('width');
         this.heigth = this.getAttribute('heigth');
         this.getPaymentDetails = this.getAttribute("monetization-link")
+        this.isWebMonetized(); // to check if the page is web monetized or not.
         this.render();                                                                           
     }
 
@@ -82,6 +82,19 @@ class WebMonetizedVideo extends HTMLElement {
         video.addEventListener("onratechange", ()=> {
             console.log("You have increased or decreased the video speed you will be charged on the basis of how video viewed!")
         })
+    }
+
+    webMonetizationEventListeners() {
+        if(this.hasWebMonetizationEnabled){
+            document.monetization.addEventListener("monetizationstop", this.startEventHandler());
+            document.monetization.addEventListener("monetizationstart", this.startEventHandler());
+            document.monetization.addEventListener("monetizationpending", this.startEventHandler());
+            document.monetization.addEventListener("monetizationprogress", this.startEventHandler());
+        }
+    }
+
+    startEventHandler(event) {
+        console.log(event);
     }
 }
 
