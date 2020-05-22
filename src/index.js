@@ -31,7 +31,7 @@ class WebMonetizedVideo extends HTMLElement {
         if(!this.hasWebMonetizationEnabled) {
             const monetizationTag = document.createElement('meta');
             monetizationTag.name = "monetization";
-            monetizationTag.content = "payment_pointer_comes_here";
+            monetizationTag.content = this.getPaymentDetails;
             document.head.appendChild(monetizationTag);
         }
     }
@@ -43,11 +43,11 @@ class WebMonetizedVideo extends HTMLElement {
 
     connectedCallback() {
         //called when the element is inserted in the DOM.
-        console.log('connected!');
         this.createShadowRoot();
         this.url = this.getAttribute('url');
         this.width = this.getAttribute('width');
         this.heigth = this.getAttribute('heigth');
+        this.getPaymentDetails = this.getAttribute("monetization-link")
         this.render();                                                                           
     }
 
