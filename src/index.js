@@ -1,5 +1,6 @@
 const template = document.createElement('template');
 
+//support for both the video and iframe should be there.
 class WebMonetizedVideo extends HTMLElement {
     constructor()  {
         super()
@@ -30,6 +31,29 @@ class WebMonetizedVideo extends HTMLElement {
         video.appendChild(source);
         this.addStyle() //check if required
     }
+
+    addVideoEventListeners(video) {
+        video.addEventListener("play", ()=> {
+            video.classList.add("play");
+        })
+        video.addEventListener("pause", ()=> {
+            video.classList.add("pause")
+        })
+        // listen for current frame
+        video.addEventListener("listen", ()=> {
+            video.classList.remove("listen")
+        })
+    }
+
+    createSource()
+
+    // will update this later if required!!
+    // addSourceTag(source) {
+    //     [...this.text].forEach(letter=> {
+    //         let source = this.createSource(letter)
+
+    //     })
+    // }
 
     disconnectedCallback() {
         //called when element is removed from DOM.
