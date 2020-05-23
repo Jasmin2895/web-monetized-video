@@ -1,6 +1,6 @@
 {
   "name": "web-monetization-video",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A video web component which charges you the amount for which you have watched the video.",
   "main": "dist/wm-ad-hider.cjs.js",
   "scripts": {
