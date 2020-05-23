@@ -6,8 +6,7 @@ const getStyle = (width = '300', heigth = '150') => {
     }
     `
   }
-//accept both iFrame and Video element (Iframe for 3rd party and video on any website)
-export class WebMonetizedVideo extends HTMLElement {
+ class WebMonetizedVideo extends HTMLElement {
     constructor()  {
         super();
         console.log("constructor called!")
@@ -133,3 +132,5 @@ try {
     h3.innerHTML = "This site uses webcomponents which don't work in all browsers! Try this site in a browser that supports them!";
     document.body.appendChild(h3);
 }
+
+module.exports = WebMonetizedVideo;
