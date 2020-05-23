@@ -6,7 +6,7 @@ const getStyle = (width = '300', heigth = '150') => {
     }
     `
   }
- export default class WebMonetizedVideo extends HTMLElement {
+class WebMonetizedVideo extends HTMLElement {
     constructor()  {
         super();
         this.hasWebMonetizationEnabled= false;
