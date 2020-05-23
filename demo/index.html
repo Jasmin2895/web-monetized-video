@@ -19,17 +19,6 @@
       margin: 0 auto;
     }
 
-    pre {
-      width: 100%;
-      overflow-x: scroll;
-    }
-
-    footer {
-      padding-top: 2em;
-      padding-bottom: 1em;
-      text-align: center;
-    }
-
     p {
       margin-top: 0;
     }
@@ -47,23 +36,6 @@
 
     <p>The
       <code>&lt;web-monetized-video&gt;</code> is a web-monetized video component which charges as you pay.</p>
-
-    <dl>
-      <dt>
-        <code>timeout</code>
-      </dt>
-      <dd>Sets the amount of time, in milliseconds, that the component will wait for web monetization to start sending payments. Default is 3000 (3 seconds).</dd>
-      <dt>
-        <code>ad-template</code>
-      </dt>
-      <dd>A CSS selector for a
-        <code>&lt;template&gt;</code> element. The component will find the template, hydrate it and use it as the ad contents. This overrides nesting a template element within the custom element.</dd>
-    </dl>
-
-    <h2>Examples</h2>
-
-    <p>If you are using a browser that doesn't support the Web Monetization API then you will immediately see the text "Adverts" below. If your browser supports Web Monetization and you send a payment to the page then the text "Adverts" will either not appear or disappear once you start sending payments.</p>
-
     <web-monetized-video width="300" heigth="200" url="https://www.html5rocks.com/en/tutorials/video/basics/Chrome_ImF.webm" monetization-link="$wallet.example.com/alice"></web-monetized-video>
   </main>
   <script src="./../src/web-monetized-video.min.js"></script>
