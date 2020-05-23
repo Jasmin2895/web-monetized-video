@@ -1,72 +1,36 @@
 {
-  "name": "web-monetization",
+  "name": "web-monetization-video",
   "version": "1.0.0",
-  "description": "experimenting with web monetisation API",
+  "description": "A video web component which charges you the amount for which you have watched the video.",
   "main": "app.js",
   "scripts": {
     "start": "node src/index.js",
     "build": "webpack",
     "deploy": "NODE_ENV=production webpack && node server.js"
   },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "moduleDirectories": [
-      "node_modules"
-    ],
-    "setupFiles": [
-      "<rootDir>/src/tests/setup.js"
-    ],
-    "moduleNameMapper": {
-      "\\.(css|styl|less|sass|scss)$": "identity-obj-proxy"
-    },
-    "transform": {
-      "^.+\\.js$": "babel-jest",
-      "^.+\\.jsx$": "babel-jest",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/tests/__mock__/fileTransformer.js"
-    }
-  },
-  "bin": {
-    "simple-react-app": "./bin/sra.js"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jasmin2895/web-monetization.git"
+    "url": "git+https://github.com/Jasmin2895/web-monetization-video.git"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "web monetization",
+    "video",
+    "web component"
+  ],
+  "files": [
+    "src/*"
+  ],
+  "author": "Jasmin Virdi <jasmin28virdi@gmail.com>",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Jasmin2895/web-monetization/issues"
+    "url": "https://github.com/Jasmin2895/web-monetization-video/issues"
   },
-  "homepage": "https://github.com/Jasmin2895/web-monetization#readme",
-  "dependencies": {
-    "babel-polyfill": "^6.9.1",
-    "normalize.css": "^4.2.0",
-    "react": "^15.1.0",
-    "react-addons-css-transition-group": "^15.1.0",
-    "react-dom": "^15.1.0",
-    "react-router": "^2.5.2",
-    "underscore": "^1.8.3"
-  },
-  "preferGlobal": true,
+  "homepage": "https://github.com/Jasmin2895/web-monetization-video#readme",
   "devDependencies": {
-    "babel-core": "^6.10.4",
-    "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.11.1",
-    "babel-preset-react-hmre": "^1.1.1",
-    "css-loader": "^0.23.1",
-    "express": "^4.14.0",
-    "file-loader": "^0.9.0",
-    "html-webpack-plugin": "^2.22.0",
-    "node-sass": "^3.8.0",
-    "sass-loader": "^4.0.0",
-    "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7",
-    "webpack": "^1.13.1",
-    "webpack-dev-middleware": "^1.2.0",
-    "webpack-hot-middleware": "^2.9.1"
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "rollup": "^2.10.2",
+    "rollup-plugin-babel": "^4.4.0",
+    "uglify-js": "^3.9.3"
   }
 }
