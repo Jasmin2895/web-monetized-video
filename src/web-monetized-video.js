@@ -97,12 +97,6 @@ const getStyle = (width = '300', heigth = '150') => {
         if(document.monetization.state === "started") {
             this.calculateCharge(event);
         }
-        else if(document.monetization.state === "pending"){
-            console.log("Currently in Pending State. Will start shortly!")
-        }
-        else if(document.monetization.state === "stopped") {
-            console.log(" Monetization is stopped!")
-        }
     }
     calculateCharge(event) {
         let totalAmount = 0, scale;
@@ -111,7 +105,6 @@ const getStyle = (width = '300', heigth = '150') => {
         }
         total += Number(event.detail.amount)
         const formatted = (total * Math.pow(10, -scale)).toFixed(scale)
-        console.log("Your total amount is ", formatted); // can display this amount in h4 tag
     }
 }
 
