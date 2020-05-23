@@ -116,4 +116,4 @@ try {
     document.body.appendChild(h3);
 }
 
-module.exports = WebMonetizedVideo;
+export default WebMonetizedVideo;
