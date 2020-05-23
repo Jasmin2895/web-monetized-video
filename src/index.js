@@ -1,9 +1,5 @@
 const getStyle = (width = '300', heigth = '150') => {
     return `
-    .err-msg {
-        display: flex;
-        justify-content: center;
-    }
     .video-component {
         width: ${width}px;
         heigth: ${heigth}px;
@@ -11,7 +7,7 @@ const getStyle = (width = '300', heigth = '150') => {
     `
   }
 //accept both iFrame and Video element (Iframe for 3rd party and video on any website)
-class WebMonetizedVideo extends HTMLElement {
+export class WebMonetizedVideo extends HTMLElement {
     constructor()  {
         super();
         console.log("constructor called!")
@@ -21,10 +17,7 @@ class WebMonetizedVideo extends HTMLElement {
 
     isWebMonetized() {
         if(!document.monetized) {
-            const h4 = document.createElement("h4");
-            h4.classList.add("err-msg")
-            h4.innerHTML = "Your browser is not web moentized"
-            document.body.appendChild(h4);
+            this.hasWebMonetizationEnabled = false;
         } else {
             this.hasWebMonetizationEnabled = true;
         }
@@ -36,6 +29,7 @@ class WebMonetizedVideo extends HTMLElement {
             monetizationTag.name = "monetization";
             monetizationTag.content = this.getPaymentDetails;
             document.head.appendChild(monetizationTag);
+            this.hasWebMonetizationEnabled = true;
         }
     }
 
@@ -46,7 +40,6 @@ class WebMonetizedVideo extends HTMLElement {
     }
 
     connectedCallback() {
-        //called when the element is inserted in the DOM.
         this.createShadowRoot();
         this.url = this.getAttribute('url');
         this.width = this.getAttribute('width');
@@ -98,20 +91,32 @@ class WebMonetizedVideo extends HTMLElement {
     }
 
     webMonetizationEventListeners() {
+        console.log("hasWebMonetization", this.hasWebMonetizationEnabled)
         if(this.hasWebMonetizationEnabled){
-            document.monetization.addEventListener("monetizationstop", this.startEventHandler());
-            document.monetization.addEventListener("monetizationstart", this.startEventHandler());
-            document.monetization.addEventListener("monetizationpending", this.startEventHandler());
-            document.monetization.addEventListener("monetizationprogress", this.calculateCharge());
+            document.monetization.addEventListener("monetizationstop", this.checkMonetizationState());
+            document.monetization.addEventListener("monetizationstart", this.checkMonetizationState());
+            document.monetization.addEventListener("monetizationpending", this.checkMonetizationState());
+            document.monetization.addEventListener("monetizationprogress", this.checkMonetizationState());
         }
     }
 
+    checkMonetizationState(event) {
+        if(document.monetization.state === "started") {
+            this.calculateCharge(event);
+        }
+        else if(document.monetization.state === "pending"){
+            console.log("Currently in Pending State. Will start shortly!")
+        }
+        else if(document.monetization.state === "stopped") {
+            console.log(" Monetization is stopped!")
+        }
+    }
     calculateCharge(event) {
         let totalAmount = 0, scale;
         if(totalAmount === 0) {
-            scale = ev.detail.assetScale;
+            scale = event.detail.assetScale;
         }
-        total += Number(ev.detail.amount)
+        total += Number(event.detail.amount)
         const formatted = (total * Math.pow(10, -scale)).toFixed(scale)
         console.log("Your total amount is ", formatted); // can display this amount in h4 tag
     }
@@ -120,7 +125,6 @@ class WebMonetizedVideo extends HTMLElement {
         console.log("event", event);
     }
 }
-
 
 try {
     customElements.define('web-monetized-video', WebMonetizedVideo)
