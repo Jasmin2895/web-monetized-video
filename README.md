@@ -3,7 +3,7 @@ It is a web component which has play and pay policy. If you watch half of the vi
 
 
 ## Component:
-* [`<wm-ad-hider>`] - a component that allow the user to pay for the amount of video watched.
+* [`<web-monetized-video>`] - a component that allow the user to pay for the amount of video watched.
 
 
 ## LICENSE
