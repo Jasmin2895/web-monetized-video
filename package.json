@@ -2,14 +2,20 @@
   "name": "web-monetization-video",
   "version": "0.0.1",
   "description": "A video web component which charges you the amount for which you have watched the video.",
-  "main": "src/web-monetized-video.js",
+  "main": "dist/wm-ad-hider.cjs.js",
   "scripts": {
-    "clean": "rimraf dist",
-    "babel-version": "babel --version",
-    "build": "babel src/web-monetized-video.js --out-dir dist --copy-files --source-maps",
-    "prepublishOnly": "babel src/web-monetized-video.js --out-dir dist --copy-files --source-maps",
+    "build": "rollup -c && npm run minify",
+    "dev": "rollup -c -w",
+    "minify": "uglifyjs dist/web-monetized-video.umd.js --compress --output dist/web-monetized-video.min.js",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "browser": "dist/web-monetized-video.umd.js",
+  "module": "dist/web-monetized-video.es.js",
+  "unpkg": "dist/web-monetized-video.min.js",
+  "files": [
+    "dist/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jasmin2895/web-monetized-video.git"
@@ -18,9 +24,6 @@
     "web monetization",
     "video",
     "web component"
-  ],
-  "files": [
-    "src/web-monetized-video.js"
   ],
   "author": "Jasmin Virdi <jasmin28virdi@gmail.com>",
   "license": "MIT",
@@ -32,6 +35,9 @@
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "babel-cli": "^6.26.0",
-    "babel-loader": "^8.0.0-beta"
+    "babel-loader": "^8.0.0-beta",
+    "rollup": "^2.10.2",
+    "rollup-plugin-babel": "^4.4.0",
+    "uglify-js": "^3.9.3"
   }
 }
