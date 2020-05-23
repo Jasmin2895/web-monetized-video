@@ -53,15 +53,15 @@ class WebMonetizedVideo extends HTMLElement {
     }
 
     render() {
-        const video = document.createElement("video") // add video element define heigth and width and controls in html file
+        const video = document.createElement("video")
         video.setAttribute("id", "video");
-        video.classList.add("video-component") // check if necessary
+        video.classList.add("video-component")
         this.shadowRoot.appendChild(video);
         const source = document.createElement("source");
         source.setAttribute("src", this.url)
         video.appendChild(source);
         this.addVideoEventListeners(video);
-        this.addStyle() //check if required
+        this.addStyle();
     }
 
     addStyle() {
@@ -95,12 +95,24 @@ class WebMonetizedVideo extends HTMLElement {
             document.monetization.addEventListener("monetizationstop", this.startEventHandler());
             document.monetization.addEventListener("monetizationstart", this.startEventHandler());
             document.monetization.addEventListener("monetizationpending", this.startEventHandler());
-            document.monetization.addEventListener("monetizationprogress", this.startEventHandler());
+            document.monetization.addEventListener("monetizationprogress", this.calculateCharge());
         }
     }
 
-    startEventHandler(event) {
+    calculateCharge(event) {
+        let totalAmount = 0, scale;
+        if(totalAmount === 0) {
+            scale = ev.detail.assetScale;
+        }
+        total += Number(ev.detail.amount)
+        const formatted = (total * Math.pow(10, -scale)).toFixed(scale)
+        console.log("Your total amount is ", formatted);
         console.log(event); 
+        
+    }
+
+    startEventHandler(event) {
+        console.log("event", event);
     }
 }
 
