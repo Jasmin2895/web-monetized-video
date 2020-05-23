@@ -6,7 +6,6 @@
   "scripts": {
     "build": "rollup -c && npm run minify",
     "dev": "rollup -c -w",
-    "minify": "uglifyjs dist/wm-ad-hider.umd.js --compress --output dist/wm-ad-hider.min.js",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
