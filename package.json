@@ -4,7 +4,7 @@
   "description": "experimenting with web monetisation API",
   "main": "app.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node src/index.js",
     "build": "webpack",
     "deploy": "NODE_ENV=production webpack && node server.js"
   },

@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="monetization" content="$ilp.gatehub.net/532270252">
   <title>Web Monetization Ad Hider Component</title>
 
   <style>
@@ -44,10 +43,10 @@
 
 <body>
   <main>
-    <h1>The <code>&lt;wm-ad-hider&gt;</code> component</h1>
+    <h1>The <code>&lt;web-monetized-video&gt;</code> component</h1>
 
     <p>The
-      <code>&lt;wm-ad-hider&gt;</code> is a web component that you can use to hides ads if it determines the user is sending payments via web monetization.</p>
+      <code>&lt;web-monetized-video&gt;</code> is a web component that you can use to hides ads if it determines the user is sending payments via web monetization.</p>
 
     <p>The component only activates if the Web Monetization API is available, otherwise it will just show it's contents.</p>
 
@@ -69,17 +68,13 @@
 
     <p>If you are using a browser that doesn't support the Web Monetization API then you will immediately see the text "Adverts" below. If your browser supports Web Monetization and you send a payment to the page then the text "Adverts" will either not appear or disappear once you start sending payments.</p>
 
-    <wm-ad-hider>
-      <template>
-        <p><strong>Adverts</strong></p>
-      </template>
-    </wm-ad-hider>
+    <web-monetized-video width="300" heigth="200" url="https://www.html5rocks.com/en/tutorials/video/basics/Chrome_ImF.webm" monetization-link="$wallet.example.com/alice"></web-monetized-video>
 
-    <pre disabled><code>&lt;wm-ad-hider&gt;
+    <pre disabled><code>&lt;web-monetized-video&gt;
   &lt;template&gt;
     &lt;p&gt;&lt;strong&gt;Adverts&lt;/strong&gt;&lt;/p&gt;
   &lt;/template&gt;
-&lt;/wm-ad-hider&gt;</code></pre>
+&lt;/web-monetized-video&gt;</code></pre>
 
 
   </main>
@@ -90,7 +85,7 @@
     </p>
   </footer>
 
-  <script src="../dist/wm-ad-hider.umd.js"></script>
+  <script src="./../src/index.js"></script>
 </body>
 
 </html>
