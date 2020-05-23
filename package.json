@@ -1,6 +1,6 @@
 {
   "name": "web-monetization-video",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A video web component which charges you the amount for which you have watched the video.",
   "main": "app.js",
   "scripts": {
