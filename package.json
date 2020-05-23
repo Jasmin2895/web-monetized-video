@@ -18,7 +18,7 @@
     "web component"
   ],
   "files": [
-    "src/*"
+    "src/web-monetized-video"
   ],
   "author": "Jasmin Virdi <jasmin28virdi@gmail.com>",
   "license": "MIT",
