@@ -14,7 +14,8 @@
   "module": "dist/web-monetized-video.es.js",
   "unpkg": "dist/web-monetized-video.min.js",
   "files": [
-    "dist/*"
+    "src/web-monetized-video.js",
+    "demo/*"
   ],
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   "keywords": [
     "web monetization",
     "video",
+    "custom element",
     "web component"
   ],
   "author": "Jasmin Virdi <jasmin28virdi@gmail.com>",

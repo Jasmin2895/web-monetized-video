@@ -115,5 +115,3 @@ try {
     h3.innerHTML = "This site uses webcomponents which don't work in all browsers! Try this site in a browser that supports them!";
     document.body.appendChild(h3);
 }
-
-export default WebMonetizedVideo;
