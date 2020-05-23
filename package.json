@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jasmin2895/web-monetization-video.git"
+    "url": "git+https://github.com/Jasmin2895/web-monetized-video.git"
   },
   "keywords": [
     "web monetization",
@@ -23,9 +23,9 @@
   "author": "Jasmin Virdi <jasmin28virdi@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Jasmin2895/web-monetization-video/issues"
+    "url": "https://github.com/Jasmin2895/web-monetized-video/issues"
   },
-  "homepage": "https://github.com/Jasmin2895/web-monetization-video#readme",
+  "homepage": "https://github.com/Jasmin2895/web-monetized-video#readme",
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
