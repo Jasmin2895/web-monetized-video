@@ -4,7 +4,10 @@
   "description": "A video web component which charges you the amount for which you have watched the video.",
   "main": "src/web-monetized-video.js",
   "scripts": {
-    "prepublish": "npm run build",
+    "clean": "rimraf dist",
+    "babel-version": "babel --version",
+    "build": "babel src/web-monetized-video.js --out-dir dist --copy-files --source-maps",
+    "prepublishOnly": "babel src/web-monetized-video.js --out-dir dist --copy-files --source-maps",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
