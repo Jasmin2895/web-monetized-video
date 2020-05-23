@@ -6,13 +6,14 @@ const getStyle = (width = '300', heigth = '150') => {
     }
     `
   }
-
+//accept both iFrame and Video element (Iframe for 3rd party and video on any website)
 class WebMonetizedVideo extends HTMLElement {
     constructor()  {
         super()
         // runs whenever an element is created, but before the element is attached to the document.
         // it will be used to create the initial state, event listeners and creating shaow DOM.
         this.hasWebMonetizationEnabled= false;
+        this.onceWatchedFully = false;
         // let template = document.getElementById("web-monetized-video"); // confirm template required or not.
     }
 
@@ -27,7 +28,7 @@ class WebMonetizedVideo extends HTMLElement {
     }
 
     enableWebMonetization() {
-        if(!this.hasWebMonetizationEnabled) {
+        if(!this.hasWebMonetizationEnabled && !this.onceWatchedFully) {
             const monetizationTag = document.createElement('meta');
             monetizationTag.name = "monetization";
             monetizationTag.content = this.getPaymentDetails;
@@ -82,6 +83,11 @@ class WebMonetizedVideo extends HTMLElement {
         video.addEventListener("onratechange", ()=> {
             console.log("You have increased or decreased the video speed you will be charged on the basis of how video viewed!")
         })
+
+        video.addEventListener("onended", () => {
+            this.disableWebMonatization();
+            this.onceWatchedFully = true; 
+        })
     }
 
     webMonetizationEventListeners() {
@@ -94,7 +100,7 @@ class WebMonetizedVideo extends HTMLElement {
     }
 
     startEventHandler(event) {
-        console.log(event);
+        console.log(event); 
     }
 }
 
