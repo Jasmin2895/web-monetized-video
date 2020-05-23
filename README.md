@@ -1,5 +1,5 @@
 # web-monetized-video
-It is a web component which has play and pay policy. If you watch half of the video you will pay for that no need to pay for the full video.
+It is a web component which has play and pay policy. If you watch half of the video you will pay for that no need to pay for the full video. :smile: :dancer:
 
 
 ## Component:
