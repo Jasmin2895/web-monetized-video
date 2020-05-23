@@ -9,7 +9,6 @@ const getStyle = (width = '300', heigth = '150') => {
  class WebMonetizedVideo extends HTMLElement {
     constructor()  {
         super();
-        console.log("constructor called!")
         this.hasWebMonetizationEnabled= false;
         this.onceWatchedFully = false;
     }
@@ -49,7 +48,6 @@ const getStyle = (width = '300', heigth = '150') => {
     }
 
     render() {
-        console.log("render called!")
         const video = document.createElement("video")
         video.setAttribute("id", "video");
         video.classList.add("video-component")
@@ -69,14 +67,11 @@ const getStyle = (width = '300', heigth = '150') => {
     }
 
     addVideoEventListeners(video) {
-        console.log("video listeners added!")
         video.addEventListener("play", ()=> {
-            console.log("enable web monetization called")
             this.enableWebMonetization();
             this.webMonetizationEventListeners();
         })
         video.addEventListener("pause", ()=> {
-            console.log("disable web monetization called")
             this.disableWebMonatization();
         })
         video.addEventListener("ratechange", ()=> {
@@ -90,7 +85,6 @@ const getStyle = (width = '300', heigth = '150') => {
     }
 
     webMonetizationEventListeners() {
-        console.log("hasWebMonetization", this.hasWebMonetizationEnabled)
         if(this.hasWebMonetizationEnabled){
             document.monetization.addEventListener("monetizationstop", this.checkMonetizationState());
             document.monetization.addEventListener("monetizationstart", this.checkMonetizationState());
@@ -118,10 +112,6 @@ const getStyle = (width = '300', heigth = '150') => {
         total += Number(event.detail.amount)
         const formatted = (total * Math.pow(10, -scale)).toFixed(scale)
         console.log("Your total amount is ", formatted); // can display this amount in h4 tag
-    }
-
-    startEventHandler(event) {
-        console.log("event", event);
     }
 }
 
