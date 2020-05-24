@@ -1,12 +1,13 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     entry: {
+        'demo/index' : './src/demo/index.js',
         index: './src/main.js',
         'lib/web-monetized-video/index': './src/components/web-monetized-video/index.js'
     },
     plugins: [
-        // new CleanWebpackPlugin(),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'TDD Challenge',
             meta: {
