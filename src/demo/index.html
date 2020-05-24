@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<body>
+
+		<template>
+			<h1>Hello Rick!</h1>
+		</template>
+		<web-monetized-video width="200" heigth="300" url="https://www.html5rocks.com/en/tutorials/video/basics/Chrome_ImF.webm" monetization-link="$wallet.example.com/alice"></web-monetized-video>
+		<my-component>
+		</my-component>
+		<script>
+		class MyComponent extends HTMLElement {
+		constructor() {
+			super();
+			this.addEventListener('click',
+			() => {
+				this.style.color === 'red'
+				? this.style.color = 'blue':
+				this.style.color = 'red';
+			});
+			}
+			connectedCallback() {
+			/*called when the element is 
+				connected to the page
+			*/
+			this.style.color = 'blue';
+			
+			const template = 
+			document.querySelector('template');
+				
+			const clone =    
+			document.
+			importNode(template.content, true);
+			console.log("this", this);
+			//this.appendChild(clone);
+			this.attachShadow({ mode: 'open' });         
+			this.shadowRoot.appendChild(clone); 
+			}
+		}
+		customElements.define('my-component', MyComponent);
+		</script>
+		<script src="./../components/web-monetized-video"></script>
+	</body>
+</html>
