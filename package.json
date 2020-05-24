@@ -1,8 +1,9 @@
 {
   "name": "web-monetization-video",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A video web component which charges you the amount for which you have watched the video.",
   "main": "src/web-monetized-video.js",
+  "module": "src/web-monetized-video.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -35,5 +36,10 @@
     "rollup": "^2.10.2",
     "rollup-plugin-babel": "^4.4.0",
     "uglify-js": "^3.9.3"
+  },
+  "release" : {
+    "branches": [
+      "master"
+    ]
   }
 }
