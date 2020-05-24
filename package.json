@@ -31,6 +31,7 @@
     "@babel/preset-env": "^7.9.6",
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.0.0-beta",
+    "braces": "^3.0.2",
     "rollup": "^2.10.2",
     "rollup-plugin-babel": "^4.4.0",
     "uglify-js": "^3.9.3"
