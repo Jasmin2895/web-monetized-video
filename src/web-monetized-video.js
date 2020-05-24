@@ -38,7 +38,7 @@ class WebMonetizedVideo extends HTMLElement {
     }
 
     connectedCallback() {
-        this.createShadowRoot();
+        // this.createShadowRoot();
         this.url = this.getAttribute('url');
         this.width = this.getAttribute('width');
         this.heigth = this.getAttribute('heigth');

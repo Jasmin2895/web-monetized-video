@@ -1,18 +1,11 @@
 {
   "name": "web-monetization-video",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A video web component which charges you the amount for which you have watched the video.",
-  "main": "dist/wm-ad-hider.cjs.js",
+  "main": "src/web-monetized-video.js",
   "scripts": {
-    "build": "rollup -c && npm run minify",
-    "dev": "rollup -c -w",
-    "minify": "uglifyjs dist/web-monetized-video.umd.js --compress --output dist/web-monetized-video.min.js",
-    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "browser": "dist/web-monetized-video.umd.js",
-  "module": "dist/web-monetized-video.es.js",
-  "unpkg": "dist/web-monetized-video.min.js",
   "files": [
     "src/web-monetized-video.js",
     "demo/*"
