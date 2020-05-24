@@ -1,8 +1,8 @@
 {
   "name": "web-monetized-video",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A video web component which charges you the amount for which you have watched the video.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "module": "src/web-monetized-video.js",
   "scripts": {
     "readme": "doctoc ./README.md",
@@ -17,6 +17,11 @@
     "type": "git",
     "url": "git+https://github.com/Jasmin2895/web-monetized-video.git"
   },
+  "files": [
+    "dist/*",
+    "src/*",
+    "config/*"
+  ],
   "keywords": [
     "web monetization",
     "video",
