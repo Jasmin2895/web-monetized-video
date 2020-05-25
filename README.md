@@ -31,7 +31,7 @@ A web component with has play and pay policy. This component charges you for the
 
 ### Parameters
 * `width` - Width of the element
-* `heigth` - Heigth of the element
+* `height` - Height of the element
 * `url`- Link of the video. (Ex- `https://www.html5rocks.com/en/tutorials/video/basics/Chrome_ImF.webm`)
 * `monetization-link`- payment wallet of the user (Ex- `$wallet.example.com/alice`)
 

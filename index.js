@@ -29,7 +29,7 @@ class WebMonetizedVideo extends HTMLElement{
 
     connectedCallback() {
         this.width = this.getAttribute("width");
-        this.heigth = this.getAttribute('heigth');
+        this.height = this.getAttribute('height');
         this.url = this.getAttribute('url');
         this.getPaymentDetails = this.getAttribute("monetization-link")
         this.setProperties();
@@ -38,7 +38,7 @@ class WebMonetizedVideo extends HTMLElement{
 
     setProperties() {
         this.$video.setAttribute("width", this.width);
-        this.$video.setAttribute("heigth", this.heigth);
+        this.$video.setAttribute("height", this.height);
         this.$source.setAttribute("src", this.url);
         this.addVideoEventListeners();
     }
