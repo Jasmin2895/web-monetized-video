@@ -1,0 +1,43 @@
+{
+  "name": "web-monetization",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "./dist/*",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && rollup --config",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish-patch": "yarn run build && np patch --no-tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jasmin2895/web-monetized-video.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "keywords": [
+    "web monetization",
+    "video",
+    "player",
+    "web component",
+    "custom element"
+  ],
+  "author": "Jasmin Virdi <jasmin28virdi@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jasmin2895/web-monetized-video/issues"
+  },
+  "homepage": "https://github.com/Jasmin2895/web-monetized-video#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^12.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "np": "^6.2.3",
+    "rollup": "^2.10.9",
+    "rollup-plugin-esmin": "^0.1.4",
+    "rollup-plugin-terser": "^6.1.0"
+  }
+}
