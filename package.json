@@ -1,6 +1,6 @@
 {
   "name": "web-monetization",
-  "version": "1.0.0",
+  "version": "0.0.4",
   "description": "",
   "main": "index.js",
   "files": [
@@ -37,7 +37,6 @@
     "@rollup/plugin-node-resolve": "^8.0.0",
     "np": "^6.2.3",
     "rollup": "^2.10.9",
-    "rollup-plugin-esmin": "^0.1.4",
     "rollup-plugin-terser": "^6.1.0"
   }
 }
