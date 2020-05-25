@@ -2,7 +2,8 @@
   "name": "web-monetization",
   "version": "0.0.4",
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "main": "dist/web-monetized-video.js",
   "files": [
     "./dist/*",
     "README.md"
