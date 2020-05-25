@@ -73,6 +73,7 @@ class WebMonetizedVideo extends HTMLElement{
             monetizationTag.content = this.getPaymentDetails;
             document.head.appendChild(monetizationTag);
             this.hasWebMonetizationEnabled = true;
+            this.webMonetizationEventListeners();
         }
     }
 
@@ -84,7 +85,16 @@ class WebMonetizedVideo extends HTMLElement{
 
     webMonetizationEventListeners() {
         if(this.hasWebMonetizationEnabled){
-            // dispatch events when monetization process starts
+            if(document.monetization && document.monetization.state === "started"){
+                this.dispatchEvent(new Event("monetizationstart"))
+                this.dispatchEvent(new Event("monetizationprogress"))
+            }
+            else if(document.monetization && document.monetization.state === 'pending') {
+                this.dispatchEvent(new Event("monetizationpending"))
+            }
+            else if(document.monetization && document.monetization.state === 'stopped') {
+                this.dispatchEvent(new Event("monetizationstop"))
+            }
         }
     }
 }
