@@ -23,7 +23,7 @@ A web component with has play and pay policy. This component charges you for the
 </head>
 <body>
 
-  `<web-monetized-video width="300" heigth="200" url="video_url" monetization-link="payment_pointer"></web-monetized-video>
+  `<web-monetized-video width="300" height="200" url="video_url" monetization-link="payment_pointer"></web-monetized-video>
 
 </body>
 </html>
