@@ -7,7 +7,7 @@ Here is a basic  example of implementing web monetization using plugins in Vue A
 ## Steps
 
 ### Create a Web Monetization Plugin
-```
+```javascript
 // file: web-monetization.js
 export default {
   install(Vue) {
@@ -45,7 +45,7 @@ export default {
 ```
 ### Register your plugin with Vue App.
 
-```
+```javascript
 import Vue from "vue";
 import { WebMonetizationPlugin } from "./web-monetization.js";
 
@@ -54,7 +54,7 @@ Vue.use(WebMonetizationPlugin);
 
 ### Use plugin in your app.
 
-```
+```javascript
 //to enable web monetization
 this.$webMonetizaton.enableWebMonetization();
 
