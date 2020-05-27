@@ -4,6 +4,9 @@ We can use plugins in Vue to extend the Web Monetization functionality to our Vu
 
 Here is a basic  example of implementing web monetization using plugins in Vue App.
 
+## Steps
+
+### Create a Web Monetization Plugin
 ```
 // file: web-monetization.js
 export default {
@@ -39,4 +42,22 @@ export default {
     //console.log(event);
   }
 };
+```
+### Register your plugin with Vue App.
+
+```
+import Vue from "vue";
+import { WebMonetizationPlugin } from "./web-monetization.js";
+
+Vue.use(WebMonetizationPlugin);
+```
+
+### Use plugin in your app.
+
+```
+//to enable web monetization
+this.$webMonetizaton.enableWebMonetization();
+
+// to disable web monetization
+this.$webMonetizaton.disableWebMonetization();
 ```
