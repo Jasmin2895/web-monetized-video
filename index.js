@@ -7,7 +7,7 @@ template.innerHTML = `
     text-align: center;
     }
 </style>
-<video id="video" controls="controls"  >
+<video id="video" controls="controls">
     <source/>
 </video>
 `
@@ -59,16 +59,32 @@ class WebMonetizedVideo extends HTMLElement {
         this.removeVideoEventListeners();
     }
 
+    onPlayError(event) {
+        console.log("onPlayerError", event.data, event);
+    }
+    
+    onload() {
+        this.dispatchEvent(new Event("volumeChange"));
+
+        this.timeupdateInterval = setInterval(() => {
+            this.dispatchEvent(new Event('timeupdate'));
+        }, 25);
+    }
+
     removeVideoEventListeners() {
         this.$video.removeEventListener("play", this.onPlay);
         this.$video.removeEventListener("pause", this.onPause);
         this.$video.removeEventListener("ended", this.onEnded);
+        this.$video.removeEventListener("load", this.onload);
+        this.$video.removeEventListener("onError", this.onPlayError)
     }
 
     addVideoEventListeners() {
         this.$video.addEventListener("play", this.onPlay);
         this.$video.addEventListener("pause", this.onPause);
         this.$video.addEventListener("ended", this.onEnded);
+        this.$video.addEventListener("load", this.onload);
+        this.$video.addEventListener("onError", this.onPlayError);
     }
 
     enableWebMonetization() {
