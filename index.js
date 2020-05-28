@@ -12,28 +12,26 @@ template.innerHTML = `
 </video>
 `
 
-class WebMonetizedVideo extends HTMLElement{
+class WebMonetizedVideo extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ 'mode': 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
         this.$video = this.shadowRoot.getElementById("video");
-        this.$source = this.$video.childNodes[1]
-        this.setInitialFlags();
-    }
-
-    setInitialFlags() {
-        this.hasWebMonetizationEnabled= false;
-        this.onceWatchedFully = false;
+        this.$source = this.$video.childNodes[1];
     }
 
     connectedCallback() {
         this.width = this.getAttribute("width");
         this.height = this.getAttribute('height');
         this.url = this.getAttribute('url');
-        this.getPaymentDetails = this.getAttribute("monetization-link")
+        this.getPaymentDetails = this.getAttribute("monetization-link");
         this.setProperties();
-        this.isWebMonetized();
+    }
+
+    disconnectedCallback() {
+        this.removeVideoEventListeners();
+        this.removeWebMonetizationEventListeners();
     }
 
     setProperties() {
@@ -41,65 +39,86 @@ class WebMonetizedVideo extends HTMLElement{
         this.$video.setAttribute("height", this.height);
         this.$source.setAttribute("src", this.url);
         this.addVideoEventListeners();
+        this.addWebMonetizationEventListeners();
     }
-    
+
     isWebMonetized() {
-        if(!document.monetized) {
-            this.hasWebMonetizationEnabled = false;
-        } else {
-            this.hasWebMonetizationEnabled = true;
-        }
+        return !!document.monetization;
+    }
+
+    onPlay() {
+        this.enableWebMonetization();
+    }
+
+    onPause() {
+        this.disableWebMonetization();
+    }
+
+    onEnded() {
+        this.disableWebMonetization();
+        this.removeVideoEventListeners();
+    }
+
+    removeVideoEventListeners() {
+        this.$video.removeEventListener("play", this.onPlay);
+        this.$video.removeEventListener("pause", this.onPause);
+        this.$video.removeEventListener("ended", this.onEnded);
     }
 
     addVideoEventListeners() {
-        this.$video.addEventListener("play", ()=> {
-            this.enableWebMonetization();
-        })
-
-        this.$video.addEventListener("pause", ()=> {
-            this.disableWebMonatization();
-        })
-
-        this.$video.addEventListener("ended", () => {
-            this.disableWebMonatization();
-            this.onceWatchedFully = true; 
-        })
+        this.$video.addEventListener("play", this.onPlay);
+        this.$video.addEventListener("pause", this.onPause);
+        this.$video.addEventListener("ended", this.onEnded);
     }
 
     enableWebMonetization() {
-        if(!this.hasWebMonetizationEnabled && !this.onceWatchedFully) {
-            const monetizationTag = document.createElement('meta');
-            monetizationTag.name = "monetization";
-            monetizationTag.content = this.getPaymentDetails;
-            document.head.appendChild(monetizationTag);
-            this.hasWebMonetizationEnabled = true;
-            this.webMonetizationEventListeners();
+        const monetizationTag = document.createElement('meta');
+        monetizationTag.name = "monetization";
+        monetizationTag.content = this.getPaymentDetails;
+        document.head.appendChild(monetizationTag);
+    }
+
+    disableWebMonetization() {
+        const removeMonetizationTag = document.querySelector('meta[name="monetization"]');
+        removeMonetizationTag.remove();
+    }
+
+    onMonetizationStop() {
+        this.dispatchEvent(new Event("monetizationstop"));
+    }
+
+    onMonetizationPending() {
+        this.dispatchEvent(new Event("monetizationpending"));
+    }
+
+    onMonetizationStart() {
+        this.dispatchEvent(new Event("monetizationstart"));
+    }
+
+    onMonetizationProgress() {
+        this.dispatchEvent(new Event("monetizationprogress"));
+    }
+
+    addWebMonetizationEventListeners() {
+        if (this.isWebMonetized()) {
+            document.monetization.addEventListener('monetizationstop', this.onMonetizationStop);
+            document.monetization.addEventListener('monetizationpending', this.onMonetizationPending);
+            document.monetization.addEventListener('monetizationstart', this.onMonetizationStart);
+            document.monetization.addEventListener('monetizationprogress', this.onMonetizationProgress);
         }
     }
 
-    disableWebMonatization() {
-        this.hasWebMonetizationEnabled = false;
-        const removeMonetizationTag = document.querySelector('meta[name="monetization"]')
-        removeMonetizationTag.remove()
-    }
-
-    webMonetizationEventListeners() {
-        if(this.hasWebMonetizationEnabled){
-            if(document.monetization && document.monetization.state === "started"){
-                this.dispatchEvent(new Event("monetizationstart"))
-                this.dispatchEvent(new Event("monetizationprogress"))
-            }
-            else if(document.monetization && document.monetization.state === 'pending') {
-                this.dispatchEvent(new Event("monetizationpending"))
-            }
-            else if(document.monetization && document.monetization.state === 'stopped') {
-                this.dispatchEvent(new Event("monetizationstop"))
-            }
+    removeWebMonetizationEventListeners() {
+        if (this.isWebMonetized) {
+            document.monetization.removeEventListener('monetizationstop', this.onMonetizationStop);
+            document.monetization.removeEventListener('monetizationpending', this.onMonetizationPending);
+            document.monetization.removeEventListener('monetizationstart', this.onMonetizationStart);
+            document.monetization.removeEventListener('monetizationprogress', this.onMonetizationProgress);
         }
     }
 }
 
-if(!window.customElements.get("web-monetized-video")){
+if (!window.customElements.get("web-monetized-video")) {
     window.customElements.define('web-monetized-video', WebMonetizedVideo);
 }
 
