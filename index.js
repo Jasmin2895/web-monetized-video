@@ -36,7 +36,7 @@ class WebMonetizedVideo extends HTMLElement {
 
     setProperties() {
         this.$video.setAttribute("width", this.width);
-        this.$video.setAttribute("height", this.height);
+        this.$video.setAttribute("heigth", this.height);
         this.$source.setAttribute("src", this.url);
         this.addVideoEventListeners();
         this.addWebMonetizationEventListeners();
