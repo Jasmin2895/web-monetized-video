@@ -125,7 +125,7 @@ class WebMonetizedVideo extends HTMLElement {
     }
 
     removeWebMonetizationEventListeners() {
-        if (this.isWebMonetized) {
+        if (this.isWebMonetized()) { // change it to function tomorrow
             document.monetization.removeEventListener('monetizationstop', this.onMonetizationStop);
             document.monetization.removeEventListener('monetizationpending', this.onMonetizationPending);
             document.monetization.removeEventListener('monetizationstart', this.onMonetizationStart);
