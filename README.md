@@ -51,6 +51,6 @@ This will register the custom elements with the browser so they can be used as H
 MIT (c) 2020 Jasmin Virdi
 
 
-## Coming Soon
+## Coming Soon!
 
 Web component testing setup.
