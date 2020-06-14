@@ -34,6 +34,15 @@ A web component with has play and pay policy. This component charges you for the
 * `url`- Link of the video. (Example- `https://www.html5rocks.com/en/tutorials/video/basics/Chrome_ImF.webm`)
 * `monetization-link`- payment wallet of the user (Example- `$wallet.example.com/alice`)
 
+### Events Listeners
+| Events        | Are           |
+| ------------- |:-------------:| 
+| `monetizationstart`      | Determine when Web Monetization has started actively paying by adding an event listener for monetizationstart  |
+| `monetizationprogress`      | Determine the current status of the payment stream by adding an event listener for monetizationprogress |
+| `monetizationpending` |Determine when Web Monetization is enabled by adding an event listener for monetizationpending |
+| `monetizationstop` | Determine when Web Monetization has stopped by adding an event listener for monetizationstop |
+
+
 ### Adding to your app via `npm`
 
 ```bash
