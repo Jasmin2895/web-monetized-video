@@ -75,16 +75,16 @@ class WebMonetizedVideo extends HTMLElement {
         this.$video.removeEventListener("play", this.onPlay);
         this.$video.removeEventListener("pause", this.onPause);
         this.$video.removeEventListener("ended", this.onEnded);
-        this.$video.removeEventListener("load", this.onload);
-        this.$video.removeEventListener("onError", this.onPlayError)
+        this.$video.removeEventListener("loadeddata", this.onload);
+        this.$video.removeEventListener("error", this.onPlayError)
     }
 
     addVideoEventListeners() {
         this.$video.addEventListener("play", this.onPlay);
         this.$video.addEventListener("pause", this.onPause);
         this.$video.addEventListener("ended", this.onEnded);
-        this.$video.addEventListener("load", this.onload);
-        this.$video.addEventListener("onError", this.onPlayError);
+        this.$video.addEventListener("loadeddata", this.onload);
+        this.$video.addEventListener("error", this.onPlayError);
     }
 
     enableWebMonetization() {
