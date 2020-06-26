@@ -27,6 +27,7 @@ class WebMonetizedVideo extends HTMLElement {
         this.url = this.getAttribute('url');
         this.getPaymentDetails = this.getAttribute("monetization-link");
         this.setProperties();
+        this.hasWatchedOnce = false;
     }
 
     disconnectedCallback() {
@@ -55,6 +56,7 @@ class WebMonetizedVideo extends HTMLElement {
     }
 
     onEnded() {
+        this.hasWatchedOnce = true;
         this.disableWebMonetization();
         this.removeVideoEventListeners();
     }
@@ -88,10 +90,12 @@ class WebMonetizedVideo extends HTMLElement {
     }
 
     enableWebMonetization() {
-        const monetizationTag = document.createElement('meta');
-        monetizationTag.name = "monetization";
-        monetizationTag.content = this.getPaymentDetails;
-        document.head.appendChild(monetizationTag);
+        if(!this.hasWatchedOnce){
+            const monetizationTag = document.createElement('meta');
+            monetizationTag.name = "monetization";
+            monetizationTag.content = this.getPaymentDetails;
+            document.head.appendChild(monetizationTag);
+        }
     }
 
     disableWebMonetization() {
