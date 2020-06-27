@@ -1,5 +1,5 @@
 # web-monetized-video
-A web component with has play and pay policy. This component charges you for the portion of video you have watched. :smile: :dancer:
+A web component with has play and pay policy. This component charges you for the amount of video you have watched. :smile: :dancer:
 
 ## Component:
 * [`<web-monetized-video>`] - a component that allow the user to pay for the section of video watched.
